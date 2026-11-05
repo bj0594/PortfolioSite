@@ -1,0 +1,13 @@
+[
+  {
+    "slug": "portfolio-site",
+    "title": "PortfolioSite",
+    "summary": "This site",
+    "description": "A Blazor WebAssembly site that shows the projects I have chosen.",
+    "learned": "Blazor WebAssembly, bUnit and GitHub Pages",
+    "tech": ["C#", "Blazor"],
+    "image": null,
+    "repoUrl": "https://github.com/bj0594/PortfolioSite",
+    "demoUrl": "https://bj0594.github.io/PortfolioSite/"
+  }
+]
