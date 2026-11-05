@@ -3,7 +3,7 @@
 ## 1 The project in my own words
 
 A portfolio site for employers and recruiters who want to see what kinds of projects I make.
-The visitor can browse my public GitHub projects, filter them by language, open a project to read more, and go to its live demo or GitHub repo.
+The visitor can browse the projects I have chosen, open a project to read what I made and learned, and go to its live demo or GitHub repo.
 Delivered as a Blazor WebAssembly site on GitHub Pages, built from a public GitHub repo.
 
 Parts: Core, Web, Workflows, Docs, Mermaid
@@ -23,6 +23,8 @@ Rules:
 
 - A project without an image shows a placeholder
 - When projects.json cannot be read, the page shows "Could not load projects"
+- When the list is empty, the page shows "No projects yet"
+- When a project address does not exist, the page shows "Project not found"
 
 Later / bonus (NOT NOW):
 
@@ -36,7 +38,8 @@ Later / bonus (NOT NOW):
 
 ![Main flow](diagrams/main-flow.svg)
 
-The user experience visiting the site ([Mermaid source](diagrams/main-flow.mmd))
+An employer opens the site, sees the projects from projects.json, opens one, and goes on to the live demo or the repo. 
+Each diamond is a rule from §2. ([Mermaid source](diagrams/main-flow.mmd))
 
 ## 4 Interface
 
@@ -131,4 +134,5 @@ Later questions:
 - Decision: a project page has a readable address, /projects/{slug}, instead of an id
 - Decision: the projects are shown in the order of the file (featured first and sorting by date are in Later)
 - Decision: a 404.html redirect on GitHub Pages, so /projects/{slug} also works when opened directly
+- Decision: diagrams are Mermaid files in diagrams/, saved as SVG and shown as images
 - Assumption: every project in the file has a public repo on GitHub
