@@ -91,7 +91,7 @@ New project: add an object to the file, commit and push
 ## 5 Test list
 
 ### List the projects
-- [ ] Core: all projects are listed in the order of the file
+- [x] Core: all projects are listed in the order of the file
 - [ ] Web: the page shows one card per project
 - [ ] Web client: GetProjectsAsync calls GET data/projects.json and reads the list
 
