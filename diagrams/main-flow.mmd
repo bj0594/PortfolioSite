@@ -1,0 +1,16 @@
+flowchart TD
+    start([Employer opens the site]) --> load[Site reads projects.json]
+    load --> ok{Could the file be read?}
+    ok -- no --> error[/Shows: Could not load projects/]
+    ok -- yes --> list[/Shows one card per project, in the order of the file: title, short description, tech/]
+    list --> image{Does the project have an image?}
+    image -- yes --> picture[/The card shows the image/]
+    image -- no --> placeholder[/The card shows a placeholder/]
+    picture --> pick[/Employer clicks a project/]
+    placeholder --> pick
+    pick --> page[/Project page: full description, what I learned, tech, link to the repo/]
+    page --> demo{Does the project have a demo address?}
+    demo -- yes --> button[/Shows a Live demo button/]
+    demo -- no --> nobutton[/No demo button/]
+    button --> leave([Employer opens the demo or the repo on GitHub])
+    nobutton --> leave
