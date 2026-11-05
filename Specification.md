@@ -124,3 +124,11 @@ Later questions:
 - [ ] Should two projects be allowed to have the same slug?
 
 ## 6 Questions, assumptions and decisions
+
+- Decision: the projects are in a JSON file in the repo, and I add them by hand (I choose what is shown, and write my own text)
+- Decision: Blazor WebAssembly on GitHub Pages (free, no server)
+- Decision: no API, no database, no Docker and no login (the site only reads one file)
+- Decision: a project page has a readable address, /projects/{slug}, instead of an id
+- Decision: the projects are shown in the order of the file (featured first and sorting by date are in Later)
+- Decision: a 404.html redirect on GitHub Pages, so /projects/{slug} also works when opened directly
+- Assumption: every project in the file has a public repo on GitHub
