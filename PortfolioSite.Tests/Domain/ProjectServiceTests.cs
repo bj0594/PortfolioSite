@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using PortfolioSite.Core;
+﻿using PortfolioSite.Core;
 
 namespace PortfolioSite.Tests;
 
@@ -21,6 +20,6 @@ public class ProjectServiceTests
         var result = service.GetProjects();
 
         // Assert
-        Assert.Equal(new[] { "first", "second", "third" }, result.Select(i => i.Slug));
+        Assert.Equal(["first", "second", "third"], result.Select(i => i.Slug));
     }
 }
