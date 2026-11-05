@@ -1,5 +1,34 @@
 @page "/projects/{Slug}"
+@using PortfolioSite.Core
+@using PortfolioSite.Web.Data
+@inject IProjectsClient Client
+
+@if (_project is null)
+{
+    <p>Loading…</p>
+}
+else
+{
+    <PageTitle>@_project.Title</PageTitle>
+    <h1>@_project.Title</h1>
+    @if (!string.IsNullOrWhiteSpace(_project.Image))
+    {
+        <img src="@_project.Image" alt="@_project.Title" />
+    }
+    <p>@_project.Description</p>
+    <h2>What I learned</h2>
+    <p>@_project.Learned</p>
+    <p>@string.Join(", ", _project.Tech)</p>
+}
 
 @code {
     [Parameter] public string Slug { get; set; } = "";
+
+    private Project? _project;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        var all = await Client.GetProjectsAsync();
+        _project = new ProjectService(all).GetProject(Slug);
+    }
 }

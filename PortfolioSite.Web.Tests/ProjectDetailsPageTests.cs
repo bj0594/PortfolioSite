@@ -20,7 +20,7 @@ public class ProjectDetailsPageTests : BunitContext
 public void ProjectDetailsPage_KnownKey_ShowsTheDetails()
 {
     // Arrange
-    _client.Items.Add(new Project { Slug = "first", Title = "First", Description = "A library API", Summary = "TDD with xUnit" });
+    _client.Items.Add(new Project { Slug = "first", Title = "First", Description = "A library API", Learned = "TDD with xUnit" });
 
     // Act
     var page = Render<ProjectDetailsPage>(parameters => parameters.Add(p => p.Slug, "first"));
