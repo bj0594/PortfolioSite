@@ -40,6 +40,51 @@ The user experience visiting the site ([Mermaid source](diagrams/main-flow.mmd))
 
 ## 4 Interface
 
+```text
+Project: Slug (string), Title (string), Summary (string), Description (string),
+         Learned (string), Tech (List<string>), Image (string?), RepoUrl (string), DemoUrl (string?)
+Example: "book-keeper", "BookKeeper", "A library API with loans", "...", "TDD with xUnit",
+         ["C#", "ASP.NET Core"], "images/book-keeper.png", "https://github.com/bj0594/BookKeeper", null
+ 
+Project
+- bool HasDemo                → true when DemoUrl is set and not blank
+- string ImageOrPlaceholder   → Image, or "images/placeholder.png" when Image is missing or blank
+ 
+ProjectService(List<Project> projects)
+- List<Project> GetProjects()       → all projects, in the order of the file
+- Project GetProject(string slug)   → the project with that slug
+                                      unknown slug: KeyNotFoundException
+```
+ 
+Dependencies: none in Core. The Web project reads the projects from the data file and gives them to ProjectService.
+ 
+### Web pages
+ 
+```text
+Hosting: Blazor WebAssembly on GitHub Pages
+Client:  data file (see Data file)
+Menu:    Projects
+ 
+ProjectsPage        /                 shows:  one card per project (title, summary, tech, image or placeholder)
+                                      does:   clicking a card opens the project
+                                      calls:  GET data/projects.json
+                                      states: loading, empty ("No projects yet"), error ("Could not load projects")
+ProjectDetailsPage  /projects/{slug}  shows:  title, description, what I learned, tech, image or placeholder
+                                      does:   "Repo on GitHub" link, "Live demo" button when HasDemo
+                                      calls:  GET data/projects.json
+                                      states: loading, not found ("Project not found"), error ("Could not load projects")
+```
+ 
+### Data file
+ 
+```text
+File:   PortfolioSite.Web/wwwroot/data/projects.json   (GET data/projects.json)
+Fields: slug (string), title (string), summary (string), description (string), learned (string),
+        tech (string[]), image (string, optional), repoUrl (string), demoUrl (string, optional)
+Saved example: PortfolioSite.Web.Tests/Responses/projects.json
+New project: add an object to the file, commit and push
+```
+
 ## 5 Test list
 
 ## 6 Questions, assumptions and decisions
