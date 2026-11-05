@@ -92,7 +92,7 @@ New project: add an object to the file, commit and push
 
 ### List the projects
 - [x] Core: all projects are listed in the order of the file
-- [ ] Web: the page shows one card per project
+- [x] Web: the page shows one card per project
 - [x] Web client: GetProjectsAsync calls GET data/projects.json and reads the list
 
 ### Show a placeholder when a project has no image

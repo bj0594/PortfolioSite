@@ -22,4 +22,17 @@ public class ProjectServiceTests
         // Assert
         Assert.Equal(["first", "second", "third"], result.Select(i => i.Slug));
     }
+
+    [Fact]
+    public void GetProject_KnownKey_ReturnsThatOne()
+{
+        // Arrange
+        var service = new ProjectService([new Project { Slug = "first" }, new Project { Slug = "second" }]);
+
+        // Act
+        var result = service.GetProject("second");
+
+        // Assert
+        Assert.Equal("second", result.Slug);
+    }
 }
