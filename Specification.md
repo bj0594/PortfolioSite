@@ -87,4 +87,40 @@ New project: add an object to the file, commit and push
 
 ## 5 Test list
 
+### List the projects
+- [ ] Core: all projects are listed in the order of the file
+- [ ] Web: the page shows one card per project
+- [ ] Web client: GetProjectsAsync calls GET data/projects.json and reads the list
+
+### Show a placeholder when a project has no image
+- [ ] Core: ImageOrPlaceholder gives the placeholder when Image is missing or blank
+- [ ] Web: the card shows the placeholder image
+
+### Open a project page
+- [ ] Core: a project can be found by its slug
+- [ ] Web: clicking a card opens the project page with the description and what I learned
+
+### Open a project that does not exist
+- [ ] Core: GetProject fails for an unknown slug
+- [ ] Web: the page shows "Project not found"
+
+### Link to the repo and the demo
+- [ ] Core: HasDemo is true when DemoUrl is set, and false when it is missing or blank
+- [ ] Web: the project page links to the repo, and shows "Live demo" only when HasDemo
+
+### Empty list and errors
+- [ ] Web: the page shows "No projects yet" when the list is empty
+- [ ] Web: the page shows "Could not load projects" when the file cannot be read
+
+### Infrastructure
+- [ ] Workflows: build and test run on every push and pull request
+- [ ] Pages: the published page answers 200 with the right base href
+
+Manual checks:
+- [ ] Opening /PortfolioSite/projects/<slug> directly on GitHub Pages shows the project
+- [ ] The site is readable on a phone
+
+Later questions:
+- [ ] Should two projects be allowed to have the same slug?
+
 ## 6 Questions, assumptions and decisions
