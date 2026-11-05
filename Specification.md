@@ -120,7 +120,8 @@ New project: add an object to the file, commit and push
 - [ ] Pages: the published page answers 200 with the right base href
 
 Manual checks:
-- [ ] Opening /PortfolioSite/projects/<slug> directly on GitHub Pages shows the project
+- [x] The workflow is green in Actions
+- [ ] The site opens on GitHub Pages, also on a page address
 - [ ] The site is readable on a phone
 
 Later questions:
