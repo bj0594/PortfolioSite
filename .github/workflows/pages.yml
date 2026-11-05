@@ -22,7 +22,7 @@ jobs:
         with:
           dotnet-version: 10.0.x
       - run: dotnet test
-      - run: dotnet publish <ProjectName>.Web -c Release -o publish
+      - run: dotnet publish PortfolioSite.Web -c Release -o publish
       - name: Set the base href to the repository name
         run: sed -i 's|<base href="/" />|<base href="/<repo>/" />|' publish/wwwroot/index.html
       - name: Let GitHub Pages open every page address
