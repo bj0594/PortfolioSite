@@ -6,7 +6,7 @@ using PortfolioSite.Web.Pages;
 
 namespace PortfolioSite.Web.Tests;
 
-// Renders <Things>Page with the fake client, so the tests need no file.
+// Renders ProjectsPage with the fake client, so the tests need no file.
 public class ProjectsPageTests : BunitContext
 {
     private readonly FakeProjectsClient _client = new ();
@@ -27,6 +27,6 @@ public void ProjectsPage_TwoInTheFile_ShowsOneCardEach()
     var page = Render <ProjectsPage> ();
 
     // Assert
-    Assert.Equal(2, page.FindAll(".projects-card").Count);
+    Assert.Equal(2, page.FindAll(".project-card").Count);
 }
 }

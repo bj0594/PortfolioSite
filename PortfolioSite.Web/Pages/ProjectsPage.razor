@@ -1,1 +1,34 @@
 @page "/"
+@using PortfolioSite.Core
+@using PortfolioSite.Web.Data
+@inject IProjectsClient Client
+
+<PageTitle>Projects</PageTitle>
+
+<h1>Projects</h1>
+
+@if (_projects is null)
+{
+    <p>Loading…</p>
+}
+else
+{
+    @foreach (var project in _projects)
+    {
+        <article class="project-card">
+            <h2>@project.Title</h2>
+            <p>@project.Summary</p>
+            <p>@string.Join(", ", project.Tech)</p>
+        </article>
+    }
+}
+
+@code {
+    private IReadOnlyList<Project>? _projects;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var all = await Client.GetProjectsAsync();
+        _projects = new ProjectService(all).GetProjects();
+    }
+}
