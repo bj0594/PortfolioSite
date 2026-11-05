@@ -1,4 +1,6 @@
 <Solution>
   <Project Path="PortfolioSite.Core/PortfolioSite.Core.csproj" />
   <Project Path="PortfolioSite.Tests/PortfolioSite.Tests.csproj" />
+  <Project Path="PortfolioSite.Web.Tests/PortfolioSite.Web.Tests.csproj" />
+  <Project Path="PortfolioSite.Web/PortfolioSite.Web.csproj" />
 </Solution>
