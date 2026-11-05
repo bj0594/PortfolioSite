@@ -100,7 +100,7 @@ New project: add an object to the file, commit and push
 - [ ] Web: the card shows the placeholder image
 
 ### Open a project page
-- [ ] Core: a project can be found by its slug
+- [x] Core: a project can be found by its slug
 - [ ] Web: clicking a card opens the project page with the description and what I learned
 
 ### Open a project that does not exist
