@@ -3,7 +3,11 @@
 @using PortfolioSite.Web.Data
 @inject IProjectsClient Client
 
-@if (_project is null)
+@if (_notFound)
+{
+    <p>Project not found</p>
+}
+else if (_project is null)
 {
     <p>Loading…</p>
 }
@@ -25,10 +29,18 @@ else
     [Parameter] public string Slug { get; set; } = "";
 
     private Project? _project;
+    private bool _notFound;
 
     protected override async Task OnParametersSetAsync()
     {
         var all = await Client.GetProjectsAsync();
-        _project = new ProjectService(all).GetProject(Slug);
+        try
+        {
+            _project = new ProjectService(all).GetProject(Slug);
+        }
+        catch (KeyNotFoundException)
+        {
+            _notFound = true;
+        }
     }
 }
