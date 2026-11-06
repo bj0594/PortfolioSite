@@ -104,8 +104,8 @@ New project: add an object to the file, commit and push
 - [x] Web: clicking a card opens the project page with the description and what I learned
 
 ### Open a project that does not exist
-- [ ] Core: GetProject fails for an unknown slug
-- [ ] Web: the page shows "Project not found"
+- [x] Core: GetProject fails for an unknown slug
+- [x] Web: the page shows "Project not found"
 
 ### Link to the repo and the demo
 - [ ] Core: HasDemo is true when DemoUrl is set, and false when it is missing or blank
