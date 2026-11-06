@@ -16,7 +16,13 @@ else
     @foreach (var project in _projects)
     {
         <article class="project-card">
-            <h2>@project.Title</h2>
+            <a href="projects/@project.Slug">
+                @if (!string.IsNullOrWhiteSpace(project.Image))
+                {
+                    <img src="@project.Image" alt="@project.Title" />
+                }
+                <h2>@project.Title</h2>
+            </a>
             <p>@project.Summary</p>
             <p>@string.Join(", ", project.Tech)</p>
         </article>
