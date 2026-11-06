@@ -42,4 +42,31 @@ public void ProjectDetailsPage_KnownKey_ShowsTheDetails()
         // Assert
         Assert.Contains("Project not found", page.Markup);
     }
+
+    [Fact]
+    public void ProjectDetailsPage_WithOptionalUrl_ShowsBothLinks()
+    {
+        // Arrange
+        _client.Items.Add(new Project { Slug = "first", Title = "First", RepoUrl = "https://github.com/me/first", DemoUrl = "https://me.github.io/first/" });
+
+        // Act
+        var page = Render<ProjectDetailsPage>(parameters => parameters.Add(p => p.Slug, "first"));
+
+        // Assert
+        Assert.Equal("https://github.com/me/first", page.Find("a.main-link").GetAttribute("href"));
+        Assert.Equal("https://me.github.io/first/", page.Find("a.optional-link").GetAttribute("href"));
+    }
+
+    [Fact]
+    public void ProjectDetailsPage_WithoutOptionalUrl_HasNoOptionalLink()
+    {
+        // Arrange
+        _client.Items.Add(new Project { Slug = "first", Title = "First", RepoUrl = "https://github.com/me/first" });
+
+        // Act
+        var page = Render<ProjectDetailsPage>(parameters => parameters.Add(p => p.Slug, "first"));
+
+        // Assert
+        Assert.Empty(page.FindAll("a.optional-link"));
+    }
 }
