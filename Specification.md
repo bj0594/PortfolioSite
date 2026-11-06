@@ -101,7 +101,7 @@ New project: add an object to the file, commit and push
 
 ### Open a project page
 - [x] Core: a project can be found by its slug
-- [ ] Web: clicking a card opens the project page with the description and what I learned
+- [x] Web: clicking a card opens the project page with the description and what I learned
 
 ### Open a project that does not exist
 - [ ] Core: GetProject fails for an unknown slug

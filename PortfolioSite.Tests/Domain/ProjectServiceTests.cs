@@ -35,4 +35,14 @@ public class ProjectServiceTests
         // Assert
         Assert.Equal("second", result.Slug);
     }
+
+    [Fact]
+    public void GetProject_UnknownKey_ThrowsKeyNotFoundException()
+    {
+        // Arrange
+        var service = new ProjectService([new Project { Slug = "first" }]);
+
+        // Act and Assert
+        Assert.Throws<KeyNotFoundException>(() => service.GetProject("missing"));
+    }
 }
