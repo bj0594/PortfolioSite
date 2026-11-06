@@ -12,21 +12,36 @@ public class ProjectsPageTests : BunitContext
     private readonly FakeProjectsClient _client = new ();
 
     public ProjectsPageTests()
-{
-    Services.AddSingleton<IProjectsClient>(_client);
-}
+    {
+        Services.AddSingleton<IProjectsClient>(_client);
+    }
 
-[Fact]
-public void ProjectsPage_TwoInTheFile_ShowsOneCardEach()
-{
-    // Arrange
-    _client.Items.Add(new Project { Slug = "first", Title = "First" });
-    _client.Items.Add(new Project { Slug = "second", Title = "Second" });
+    [Fact]
+    public void ProjectsPage_TwoInTheFile_ShowsOneCardEach()
+    {
+        // Arrange
+        _client.Items.Add(new Project { Slug = "first", Title = "First" });
+        _client.Items.Add(new Project { Slug = "second", Title = "Second" });
 
-    // Act
-    var page = Render <ProjectsPage> ();
+        // Act
+        var page = Render <ProjectsPage> ();
 
-    // Assert
-    Assert.Equal(2, page.FindAll(".project-card").Count);
-}
+        // Assert
+        Assert.Equal(2, page.FindAll(".project-card").Count);
+    }
+
+    [Fact]
+    public void ProjectsPage_TwoInTheFile_EachCardLinksToItsPage()
+    {
+        // Arrange
+        _client.Items.Add(new Project { Slug = "first", Title = "First" });
+        _client.Items.Add(new Project { Slug = "second", Title = "Second" });
+
+        // Act
+        var page = Render< ProjectsPage>();
+
+        // Assert
+        Assert.Equal("projects/second", page.FindAll(".project-card a")[1].GetAttribute("href"));
+    }
+
 }
