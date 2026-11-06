@@ -29,4 +29,17 @@ public void ProjectDetailsPage_KnownKey_ShowsTheDetails()
     Assert.Contains("A library API", page.Markup);
     Assert.Contains("TDD with xUnit", page.Markup);
 }
+
+    [Fact]
+    public void ProjectDetailsPage_UnknownKey_ShowsNotFound()
+    {
+        // Arrange
+        _client.Items.Add(new Project { Slug = "first", Title = "First" });
+
+        // Act
+        var page = Render<ProjectDetailsPage>(parameters => parameters.Add(p => p.Slug, "missing"));
+
+        // Assert
+        Assert.Contains("Project not found", page.Markup);
+    }
 }
