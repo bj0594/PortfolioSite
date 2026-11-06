@@ -11,5 +11,5 @@ public class Project
     public string? Image { get; set; }
     public string RepoUrl { get; set; } = "";
     public string? DemoUrl { get; set; }
-    public bool HasDemo => throw new NotImplementedException();
+    public bool HasDemo => !string.IsNullOrWhiteSpace(DemoUrl);
 }
