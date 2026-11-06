@@ -44,4 +44,26 @@ public class ProjectsPageTests : BunitContext
         Assert.Equal("projects/second", page.FindAll(".project-card a")[1].GetAttribute("href"));
     }
 
+    [Fact]
+    public void ProjectsPage_EmptyFile_ShowsNoneYet()
+    {
+        // Act
+        var page = Render<ProjectsPage>();
+
+        // Assert
+        Assert.Contains("No projects yet", page.Markup);
+    }
+
+    [Fact]
+    public void ProjectsPage_FileCannotBeRead_ShowsCouldNotLoad()
+    {
+        // Arrange
+        _client.Fail = true;
+
+        // Act
+        var page = Render<ProjectsPage>();
+
+        // Assert
+        Assert.Contains("Could not load projects", page.Markup);
+    }
 }
