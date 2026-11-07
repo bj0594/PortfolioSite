@@ -69,4 +69,17 @@ public void ProjectDetailsPage_KnownKey_ShowsTheDetails()
         // Assert
         Assert.Empty(page.FindAll("a.optional-link"));
     }
+
+    [Fact]
+    public void ProjectDetailsPage_FileCannotBeRead_ShowsCouldNotLoad()
+    {
+        // Arrange
+        _client.Fail = true;
+
+        // Act
+        var page = Render<ProjectDetailsPage>(parameters => parameters.Add(p => p.Slug, "first"));
+
+        // Assert
+        Assert.Contains("Could not load projects", page.Markup);
+    }
 }

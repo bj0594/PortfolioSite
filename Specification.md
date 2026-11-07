@@ -97,7 +97,7 @@ New project: add an object to the file, commit and push
 
 ### Show a placeholder when a project has no image
 - [x] Core: ImageOrPlaceholder gives the placeholder when Image is missing or blank
-- [ ] Web: the card shows the placeholder image
+- [x] Web: the card shows the placeholder image
 
 ### Open a project page
 - [x] Core: a project can be found by its slug
@@ -112,6 +112,7 @@ New project: add an object to the file, commit and push
 - [ ] Web: the project page links to the repo, and shows "Live demo" only when HasDemo
 
 ### Empty list and errors
+- [ ] Web: the projects page shows "Could not load projects" when the file cannot be read
 - [ ] Web: the page shows "No projects yet" when the list is empty
 - [ ] Web: the page shows "Could not load projects" when the file cannot be read
 
