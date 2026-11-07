@@ -22,21 +22,23 @@ else if (_projects.Count == 0)
 }
 else
 {
-    @foreach (var project in _projects)
-    {
-        <article class="project-card">
-            <a href="projects/@project.Slug">
-                @if (!string.IsNullOrWhiteSpace(project.Image))
-                {
-                    <img src="@project.Image" alt="@project.Title" />
-                }
-                <img src="@project.ImageOrPlaceholder" alt="@project.Title" />
-                <h2>@project.Title</h2>
-            </a>
-            <p>@project.Summary</p>
-            <p>@string.Join(", ", project.Tech)</p>
-        </article>
-    }
+    <div class="projects-grid">
+        @foreach (var project in _projects)
+        {
+            <article class="project-card">
+                <a href="projects/@project.Slug">
+                    @if (!string.IsNullOrWhiteSpace(project.Image))
+                    {
+                        <img src="@project.Image" alt="@project.Title" />
+                    }
+                    <img src="@project.ImageOrPlaceholder" alt="@project.Title" />
+                    <h2>@project.Title</h2>
+                </a>
+                <p>@project.Summary</p>
+                <p>@string.Join(", ", project.Tech)</p>
+            </article>
+        }
+    </div>
 }
 
 @code {
