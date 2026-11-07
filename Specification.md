@@ -96,7 +96,7 @@ New project: add an object to the file, commit and push
 - [x] Web client: GetProjectsAsync calls GET data/projects.json and reads the list
 
 ### Show a placeholder when a project has no image
-- [ ] Core: ImageOrPlaceholder gives the placeholder when Image is missing or blank
+- [x] Core: ImageOrPlaceholder gives the placeholder when Image is missing or blank
 - [ ] Web: the card shows the placeholder image
 
 ### Open a project page

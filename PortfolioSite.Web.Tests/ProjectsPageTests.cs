@@ -66,4 +66,17 @@ public class ProjectsPageTests : BunitContext
         // Assert
         Assert.Contains("Could not load projects", page.Markup);
     }
+
+    [Fact]
+    public void ProjectsPage_NoImage_ShowsThePlaceholder()
+    {
+        // Arrange
+        _client.Items.Add(new Project { Slug = "first", Title = "First" });
+
+        // Act
+        var page = Render<ProjectsPage>();
+
+        // Assert
+        Assert.Equal("images/placeholder.png", page.Find(".project-card img").GetAttribute("src"));
+    }
 }
