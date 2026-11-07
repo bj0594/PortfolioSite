@@ -108,17 +108,17 @@ New project: add an object to the file, commit and push
 - [x] Web: the page shows "Project not found"
 
 ### Link to the repo and the demo
-- [ ] Core: HasDemo is true when DemoUrl is set, and false when it is missing or blank
-- [ ] Web: the project page links to the repo, and shows "Live demo" only when HasDemo
+- [x] Core: HasDemo is true when DemoUrl is set, and false when it is missing or blank
+- [x] Web: the project page links to the repo, and shows "Live demo" only when HasDemo
 
 ### Empty list and errors
-- [ ] Web: the projects page shows "Could not load projects" when the file cannot be read
-- [ ] Web: the page shows "No projects yet" when the list is empty
-- [ ] Web: the page shows "Could not load projects" when the file cannot be read
+- [x] Web: the projects page shows "Could not load projects" when the file cannot be read
+- [x] Web: the page shows "No projects yet" when the list is empty
+- [x] Web: the page shows "Could not load projects" when the file cannot be read
 
 ### Infrastructure
-- [ ] Workflows: build and test run on every push and pull request
-- [ ] Pages: the published page answers 200 with the right base href
+- [x] Workflows: build and test run on every push and pull request
+- [x] Pages: the published page answers 200 with the right base href
 
 Manual checks:
 - [x] The workflow is green in Actions

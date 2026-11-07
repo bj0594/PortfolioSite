@@ -119,7 +119,7 @@ img {
 }
 
 /* The front page: as many cards per row as there is room for */
-.project-grid {
+.projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;

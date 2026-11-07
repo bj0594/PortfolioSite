@@ -27,10 +27,6 @@ else
         {
             <article class="project-card">
                 <a href="projects/@project.Slug">
-                    @if (!string.IsNullOrWhiteSpace(project.Image))
-                    {
-                        <img src="@project.Image" alt="@project.Title" />
-                    }
                     <img src="@project.ImageOrPlaceholder" alt="@project.Title" />
                     <h2>@project.Title</h2>
                 </a>
