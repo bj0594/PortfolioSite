@@ -41,3 +41,12 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v5
+
+  smoke-test:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: The published page answers 200 with the right base href
+        run: |
+          curl --fail --silent --show-error --retry 5 --retry-delay 10 --retry-all-errors -o index.html https://bj0594.github.io/PortfolioSite/
+          grep -q '<base href="/PortfolioSite/" />' index.html
