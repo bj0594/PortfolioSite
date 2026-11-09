@@ -6,29 +6,29 @@ using PortfolioSite.Web.Pages;
 
 namespace PortfolioSite.Web.Tests;
 
-// Renders <Thing>DetailsPage with the fake client, so the tests need no file.
+// Renders ProjectDetailsPage with the fake client, so the tests need no file.
 public class ProjectDetailsPageTests : BunitContext
 {
-    private readonly FakeProjectsClient _client = new ();
+    private readonly FakeProjectsClient _client = new();
 
     public ProjectDetailsPageTests()
-{
-    Services.AddSingleton<IProjectsClient>(_client);
-}
+    {
+        Services.AddSingleton<IProjectsClient>(_client);
+    }
 
-[Fact]
-public void ProjectDetailsPage_KnownKey_ShowsTheDetails()
-{
-    // Arrange
-    _client.Items.Add(new Project { Slug = "first", Title = "First", Description = "A library API", Learned = "TDD with xUnit" });
+    [Fact]
+    public void ProjectDetailsPage_KnownKey_ShowsTheDetails()
+    {
+        // Arrange
+        _client.Items.Add(new Project { Slug = "first", Title = "First", Description = "A library API", Learned = "TDD with xUnit" });
 
-    // Act
-    var page = Render<ProjectDetailsPage>(parameters => parameters.Add(p => p.Slug, "first"));
+        // Act
+        var page = Render<ProjectDetailsPage>(parameters => parameters.Add(p => p.Slug, "first"));
 
-    // Assert
-    Assert.Contains("A library API", page.Markup);
-    Assert.Contains("TDD with xUnit", page.Markup);
-}
+        // Assert
+        Assert.Contains("A library API", page.Markup);
+        Assert.Contains("TDD with xUnit", page.Markup);
+    }
 
     [Fact]
     public void ProjectDetailsPage_UnknownKey_ShowsNotFound()
@@ -81,5 +81,32 @@ public void ProjectDetailsPage_KnownKey_ShowsTheDetails()
 
         // Assert
         Assert.Contains("Could not load projects", page.Markup);
+    }
+
+    [Fact]
+    public void ProjectDetailsPage_NoImage_ShowsThePlaceholder()
+    {
+        // Arrange
+        _client.Items.Add(new Project { Slug = "first", Title = "First" });
+
+        // Act
+        var page = Render<ProjectDetailsPage>(parameters => parameters.Add(p => p.Slug, "first"));
+
+        // Assert
+        Assert.Equal("images/placeholder.png", page.Find("img").GetAttribute("src"));
+    }
+
+    [Fact]
+    public void ProjectDetailsPage_WithOptionalUrl_ShowsTheLinkTexts()
+    {
+        // Arrange
+        _client.Items.Add(new Project { Slug = "first", Title = "First", RepoUrl = "https://github.com/me/first", DemoUrl = "https://me.github.io/first/" });
+
+        // Act
+        var page = Render<ProjectDetailsPage>(parameters => parameters.Add(p => p.Slug, "first"));
+
+        // Assert
+        Assert.Equal("Repo on GitHub", page.Find("a.main-link").TextContent);
+        Assert.Equal("Live demo", page.Find("a.optional-link").TextContent);
     }
 }

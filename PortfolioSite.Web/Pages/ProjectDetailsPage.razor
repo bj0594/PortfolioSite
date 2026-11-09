@@ -7,7 +7,6 @@
 {
     <p>Could not load projects</p>
 }
-
 else if (_notFound)
 {
     <p>Project not found</p>
@@ -20,18 +19,15 @@ else
 {
     <PageTitle>@_project.Title</PageTitle>
     <h1>@_project.Title</h1>
-    @if (!string.IsNullOrWhiteSpace(_project.Image))
-    {
-        <img src="@_project.Image" alt="@_project.Title" />
-    }
+    <img src="@_project.ImageOrPlaceholder" alt="@_project.Title" />
     <p>@_project.Description</p>
     <h2>What I learned</h2>
     <p>@_project.Learned</p>
     <p>@string.Join(", ", _project.Tech)</p>
-    <a class="main-link" href="@_project.RepoUrl">Code on GitHub</a>
+    <a class="main-link" href="@_project.RepoUrl">Repo on GitHub</a>
     @if (_project.HasDemo)
     {
-        <a class="optional-link" href="@_project.DemoUrl">Live Demo</a>
+        <a class="optional-link button" href="@_project.DemoUrl">Live demo</a>
     }
 }
 
