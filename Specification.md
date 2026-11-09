@@ -84,7 +84,6 @@ ProjectDetailsPage  /projects/{slug}  shows:  title, description, what I learned
 File:   PortfolioSite.Web/wwwroot/data/projects.json   (GET data/projects.json)
 Fields: slug (string), title (string), summary (string), description (string), learned (string),
         tech (string[]), image (string, optional), repoUrl (string), demoUrl (string, optional)
-Saved example: PortfolioSite.Web.Tests/Responses/projects.json
 New project: add an object to the file, commit and push
 ```
 
@@ -98,6 +97,7 @@ New project: add an object to the file, commit and push
 ### Show a placeholder when a project has no image
 - [x] Core: ImageOrPlaceholder gives the placeholder when Image is missing or blank
 - [x] Web: the card shows the placeholder image
+- [x] Web: the project page shows the placeholder image
 
 ### Open a project page
 - [x] Core: a project can be found by its slug
@@ -110,11 +110,12 @@ New project: add an object to the file, commit and push
 ### Link to the repo and the demo
 - [x] Core: HasDemo is true when DemoUrl is set, and false when it is missing or blank
 - [x] Web: the project page links to the repo, and shows "Live demo" only when HasDemo
+- [x] Web: the links say "Repo on GitHub" and "Live demo"
 
 ### Empty list and errors
 - [x] Web: the projects page shows "Could not load projects" when the file cannot be read
 - [x] Web: the page shows "No projects yet" when the list is empty
-- [x] Web: the page shows "Could not load projects" when the file cannot be read
+- [x] Web: the project page shows "Could not load projects" when the file cannot be read
 
 ### Infrastructure
 - [x] Workflows: build and test run on every push and pull request
